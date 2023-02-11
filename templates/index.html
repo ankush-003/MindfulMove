@@ -8,14 +8,34 @@
     <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
     <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}" /> -->
     <script src="https://cdn.tailwindcss.com"></script>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+            <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet" />
+            <style>
+                .fStyle{
+                    font-family: 'Jost', sans-serif;
+                }
+                .cover {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				background-image: url("static/background2.svg");
+			}
+            </style>
+
 </head>
 <body>
-    <h2 class="text-white bg-red">Posture Detection</h2>
-    <h2>Image</h2>
+    <div class="cover">
+    <center>
+    <span class="text-[#DD6E42] text-5xl fStyle">MindfulMove</span>
+    <br><br>
+
     <form action="/" method="POST">
-        <input type="submit" value="stop" name="stop" id="capture">
+        <input type="submit" value="Please Pose :)" name="stop" id="capture">
     </form>
     <img id="frame" src="{{ url_for('capture') }}" alt="Image">
     <script src="{{ url_for('static', filename='capture.js') }}"></script>
+    </center>  
+    </div> 
 </body>
 </html>
