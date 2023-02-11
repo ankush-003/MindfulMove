@@ -6,18 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Processing</title>
     <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
-    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}" />
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+        .fStyle {
+        font-family: "Jost", sans-serif;
+        
+    }
+    .spacer {
+				height: fit-content;
+				width: 100%;
+				min-height: 100vh;
+			}
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost&display=swap"
+        rel="stylesheet"
+    />
+   
+    
 </head>
-<body>
-    <h2 class="text-white bg-red">Posture Detection</h2>
-    <h2>Image</h2>
-    <form action="/model_test" method="POST">
+<body class=" flex flex-col gap-4 fStyle bg-[#E7EEA0] spacer">
+    <h2 class="text-orange-400 text-4xl mt-6">Posture Detection</h2>
+    <!-- <h2>Image</h2> -->
+    <form class="flex flex-col gap-4 items-center" action="/model_test" method="POST">
         <!-- <input type="submit" value="stop" name="stop" id="capture"> -->
-        <select name="desired_pose" id="desired_pose">
+        <p class="text-white text-4xl">Select your desired Pose</p>
+        <select class="w-fit p-2 rounded-md" name="desired_pose" id="desired_pose">
             <option selected value={{desired_pose}}>{{desired_pose}}</option>
             <option value="vrikshasana">Vrikshasana</option>
-            <option value="random">Random</option>
+            <option value="tadasana">Tadasana</option>
+            <option value="virabhadrasana">Virabhadrasana</option>
         </select>
         <input type="submit" value="start" name="start" id="capture">
     </form>

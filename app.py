@@ -10,7 +10,7 @@ mp_drawing = mp.solutions.drawing_utils
 app = Flask(__name__)
 global stop 
 global desired_pose
-desired_pose = ''
+desired_pose = 'not selected'
 stop = False
 #loading model
 # model = tf.keras.models.load_model('./models/action-2.h5')
@@ -22,7 +22,7 @@ class Camera(object):
         self.sequence = []
         self.posture = []
         self.predictions = []
-        self.actions = np.array(['vrikshasana'])
+        self.actions = np.array(['vrikshasana', 'tadasana', 'virabhadrasana'])
         self.threshold = 0.5
         self.current_action = ''
         
@@ -44,7 +44,7 @@ class Camera(object):
             return None
     
     def model_predict(self):
-        model = tf.keras.models.load_model('./models/action-2.h5')
+        model = tf.keras.models.load_model('./models/action1.h5')
         ret, frame = self.video.read()
         if ret:
             image, results = tools.mediapipe_detection(frame, self.pose)
