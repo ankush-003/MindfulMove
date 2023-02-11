@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+{% block body %}
+    <h2>Image</h2>
+    <form action="/" method="post">
+        <input type="submit" value="Capture" name="capture" id="capture">
+    </form>
+    {% if frame %}
+        <img id="frame" src="{{ url_for('static', filename='images/' + image_name) }}" alt="Image">
+    {% endif %}
+{% endblock body %}
