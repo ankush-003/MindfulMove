@@ -44,7 +44,7 @@ class Camera(object):
             return None
     
     def model_predict(self):
-        model = tf.keras.models.load_model('./models/action-2.h5')
+        model = tf.keras.models.load_model('./models/final-hope.h5')
         ret, frame = self.video.read()
         if ret:
             image, results = tools.mediapipe_detection(frame, self.pose)
