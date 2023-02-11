@@ -6,6 +6,7 @@ import tensorflow as tf
 import numpy as np
 import tools
 mp_drawing = mp.solutions.drawing_utils
+import time 
 # app
 app = Flask(__name__)
 global stop 
@@ -51,6 +52,7 @@ class Camera(object):
     def model_predict(self):
         # global model
         # global metrics
+        
         ret, frame = self.video.read()
         if ret:
             image, results = tools.mediapipe_detection(frame, self.pose)
