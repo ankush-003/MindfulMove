@@ -39,7 +39,14 @@ def gen(camera):
     camera.__del__()        
 
 # routes
-@app.route('/', methods=['GET', 'POST'])
+
+
+@app.route('/', methods=['GET'])
+def home():
+    if request.method == 'GET':
+        return render_template('home.html')
+   
+@app.route('/exercise', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
         return render_template('index.html')
@@ -47,7 +54,7 @@ def index():
         if request.form['stop'] == 'stop':
             stop = True
             return redirect(url_for('index'))
-    
+
     
 @app.route('/capture', methods=['GET', 'POST'])
 def capture():
