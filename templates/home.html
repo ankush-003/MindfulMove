@@ -13,31 +13,75 @@
 		/>
 
 		<style>
-			body {
-				background-color: #000;
-				color: #fff;
-				text-align: center;
-			}
 			.cover {
 				background-repeat: no-repeat;
 				background-position: center;
 				background-size: cover;
+			}
+			.background {
 				background-image: url("static/background2.svg");
 			}
-            .fStyle{
-                font-family: 'Jost', sans-serif;
-            }
+			.spacer {
+				height: fit-content;
+				width: 100%;
+				min-height: 100vh;
+			}
+
+			.pose {
+				background-image: url("static/pose.png");
+			}
+			.neural {
+				background-image: url("static/neural.png");
+			}
+			.detection {
+				background-image: url("static/detection.png");
+			}
+			.accuracy {
+				background-image: url("static/accuracy.png");
+			}
+
+			.fStyle {
+				font-family: "Jost", sans-serif;
+			}
 		</style>
 		<script src="https://cdn.tailwindcss.com"></script>
 	</head>
 	<body>
-		<div class="h-screen w-screen cover flex flex-col items-center p-10 fStyle">
-			<h1 class="text-[#0B3954] text-6xl text-center">
-				MindfulMove
-			</h1>
-            <h2>
-                The ultimate yoga companion that leverages machine learning to accurately detect and guide you through your yoga practice.
-            </h2>
+		<div
+			class="cover spacer background flex flex-col items-center p-10 fStyle gap-20"
+		>
+			<h1 class="text-[#0B3954] text-6xl text-center">MindfulMove</h1>
+			<div class="text-3xl text-center flex gap-4 flex-wrap justify-center">
+				<div
+					class="flex flex-col items-center gap-4 rounded-lg p-4 bg-green-100 w-[350px] hover:scale-105 transition-all"
+				>
+					<div class="w-[150px] h-[150px] cover pose"></div>
+					<div>The ultimate yoga companion</div>
+				</div>
+				<div
+					class="flex flex-col items-center gap-4 rounded-lg p-4 bg-green-100 w-[350px] hover:scale-105 transition-all"
+				>
+					<div class="w-[150px] h-[150px] cover neural"></div>
+					<div>Powered by LSTM and neural network algorithms</div>
+				</div>
+				<div
+					class="flex flex-col items-center gap-4 rounded-lg p-4 bg-green-100 w-[350px] hover:scale-105 transition-all"
+				>
+					<div class="w-[150px] h-[150px] cover accuracy"></div>
+					<div>Get a personalized and accurate yoga experience</div>
+				</div>
+				<div
+					class="flex flex-col items-center gap-4 rounded-lg p-4 bg-green-100 w-[350px] hover:scale-105 transition-all"
+				>
+					<div class="w-[150px] h-[150px] cover detection"></div>
+					<div>Seamless pose detection and real-time feedback</div>
+				</div>
+			</div>
+			<a
+				class="p-2 rounded-md bg-green-300 text-3xl hover:scale-105 active:scale-100 transition-all"
+				href="{{ url_for('model') }}"
+				>Get Started</a
+			>
 		</div>
 	</body>
 </html>
