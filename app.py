@@ -76,7 +76,8 @@ class Camera(object):
             else:
                 color = (0, 0, 255)        
             cv2.rectangle(image, (0, 0), (640, 40), (color), -1)
-            cv2.putText(image, 'ACTION: ' + self.current_action, (3, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+            text = desired_pose if (self.current_action == desired_pose) else "Incorrect Posture!"
+            cv2.putText(image, 'ACTION: ' + text, (3, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
             # image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             # image.flags.writeable = False
             # results = self.pose.process(image)
