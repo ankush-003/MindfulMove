@@ -5,6 +5,13 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Image Processing</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Jost&display=swap"
+			rel="stylesheet"
+		/>
+
 		<style>
 			body {
 				background-color: #000;
@@ -15,13 +22,22 @@
 				background-repeat: no-repeat;
 				background-position: center;
 				background-size: cover;
-                background-image: url("static/background2.svg");
+				background-image: url("static/background2.svg");
 			}
-
+            .fStyle{
+                font-family: 'Jost', sans-serif;
+            }
 		</style>
 		<script src="https://cdn.tailwindcss.com"></script>
 	</head>
 	<body>
-		<div class="h-screen w-screen cover"></div>
+		<div class="h-screen w-screen cover flex flex-col items-center p-10 fStyle">
+			<h1 class="text-[#0B3954] text-6xl text-center">
+				MindfulMove
+			</h1>
+            <h2>
+                The ultimate yoga companion that leverages machine learning to accurately detect and guide you through your yoga practice.
+            </h2>
+		</div>
 	</body>
 </html>
