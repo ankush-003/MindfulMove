@@ -1,55 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Processing</title>
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
-    <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}" /> -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            text-align: center;
-        }
-        .fStyle {
-        font-family: "Jost", sans-serif;
-        
-    }
-    .spacer {
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Image Processing</title>
+		<!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
+		<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}" /> -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<style>
+			body {
+				text-align: center;
+			}
+			.fStyle {
+				font-family: "Jost", sans-serif;
+			}
+			.spacer {
 				height: fit-content;
 				width: 100%;
 				min-height: 100vh;
 			}
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Jost&display=swap"
-        rel="stylesheet"
-    />
-   
-    
-</head>
-<body class="fStyle bg-[#E7EEA0] spacer items-center">
-    <h2 class="text-orange-400 text-4xl mt-6">Posture Detection</h2>
-    <!-- <h2>Image</h2> -->
-    <form class="flex flex-col gap-4 items-center" action="/model_test" method="POST">
-        <!-- <input type="submit" value="stop" name="stop" id="capture"> -->
-        <p class="text-white text-4xl">Select your desired Pose</p>
-        <select class="w-fit p-2 rounded-md" name="desired_pose" id="desired_pose">
-            <option selected value={{desired_pose}}>{{desired_pose}}</option>
-            <option value="vrikshasana">Vrikshasana</option>
-            <option value="tadasana">Tadasana</option>
-            <option value="virabhadrasana">Virabhadrasana</option>
-        </select>
-        <input type="submit" value="start" name="start" id="capture">
-    </form>
-    {% if start %}
-    <div class = "flex justify-center" >
-        <img  id="frame" src="{{ url_for('capture') }}" alt="Image">
-    </div>
-    {% endif %}
-    <script src="{{ url_for('static', filename='capture.js') }}"></script>
-</body>
+			.p1 {
+				background-image: url("static/vksna.jpg");
+			}
+            .p2 {
+				background-image: url("static/tdsa.png");
+			}
+            .p3 {
+				background-image: url("static/vbbb.png");
+			}
+			.cover {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+		</style>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Jost&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body class="fStyle bg-[#E7EEA0] spacer items-center">
+		<h2 class="text-orange-400 text-4xl mt-6">Posture Detection</h2>
+		<!-- <h2>Image</h2> -->
+		<form
+			class="flex flex-col gap-4 items-center"
+			action="/model_test"
+			method="POST"
+		>
+			<!-- <input type="submit" value="stop" name="stop" id="capture"> -->
+			<p class="text-white text-4xl">Select your desired Pose</p>
+			<select
+				class="w-fit p-2 rounded-md"
+				name="desired_pose"
+				id="desired_pose"
+			>
+				<option selected value="{{desired_pose}}">{{desired_pose}}</option>
+				<option value="vrikshasana">Vrikshasana</option>
+				<option value="tadasana">Tadasana</option>
+				<option value="virabhadrasana">Virabhadrasana</option>
+			</select>
+			<input class="p-2 bg-green-300 rounded-lg w-[100px]" type="submit" value="start" name="start" id="capture" />
+		</form>
+		{% if start %}
+		<div class="flex justify-center gap-4">
+            <div class="gap-4 flex flex-col justify-between">
+				<div class="cover p1 w-[200px] h-[200px]"></div>
+                <div class="cover p2 w-[200px] h-[200px]"></div>
+			</div>
+			<div class="flex justify-center">
+				<img id="frame" src="{{ url_for('capture') }}" alt="Image" />
+			</div>
+			<div class="gap-4 flex flex-col justify-center">
+				<div class="cover p3 w-[200px] h-[200px]"></div>
+			</div>
+		</div>
+		{% endif %}
+		<script src="{{ url_for('static', filename='capture.js') }}"></script>
+	</body>
 </html>
