@@ -58,6 +58,17 @@ def index():
             stop = True
             return redirect(url_for('index'))
 
+
+@app.route('/model_test', methods=['GET', 'POST'])
+def model():
+    if request.method == 'GET':
+        return render_template('model_test.html')
+    elif request.method == 'POST':
+        if request.form['stop'] == 'stop':
+            stop = True
+            return redirect(url_for('model_test'))
+
+
     
 @app.route('/capture', methods=['GET', 'POST'])
 def capture():
