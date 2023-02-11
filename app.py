@@ -9,6 +9,8 @@ mp_drawing = mp.solutions.drawing_utils
 # app
 app = Flask(__name__)
 global stop 
+global desired_pose
+desired_pose = ''
 stop = False
 #loading model
 # model = tf.keras.models.load_model('./models/action-2.h5')
@@ -63,8 +65,11 @@ class Camera(object):
                         self.current_action = self.actions[np.argmax(res)]
                 
                 image = tools.prob_viz(res, self.actions, image, colors=[(0, 255, 0) if x == np.argmax(res) else (0, 0, 255) for x in range(len(self.actions))])
-                
-            cv2.rectangle(image, (0, 0), (640, 40), (245, 117, 16), -1)
+            if(self.current_action == desired_pose):
+                color = (0, 255, 0)
+            else:
+                color = (0, 0, 255)        
+            cv2.rectangle(image, (0, 0), (640, 40), (color), -1)
             cv2.putText(image, 'ACTION: ' + self.current_action, (3, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
             # image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             # image.flags.writeable = False
@@ -76,9 +81,6 @@ class Camera(object):
             return jpeg.tobytes()
         else:
             return None
-     
-
-        
 # genereate frame
 def gen(camera):
     while not stop:
@@ -108,12 +110,17 @@ def index():
 
 @app.route('/model_test', methods=['GET', 'POST'])
 def model():
+    global desired_pose
     if request.method == 'GET':
-        return render_template('model_test.html')
+        return render_template('model_test.html', start=False, desired_pose=desired_pose)
     elif request.method == 'POST':
+        desired_pose = request.form['desired_pose']
+        return render_template('model_test.html', start=True, desired_pose=desired_pose)
         if request.form['stop'] == 'stop':
             stop = True
             return redirect(url_for('model_test'))
+        
+        
 
 
     

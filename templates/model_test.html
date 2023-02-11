@@ -12,10 +12,18 @@
 <body>
     <h2 class="text-white bg-red">Posture Detection</h2>
     <h2>Image</h2>
-    <form action="/" method="POST">
-        <input type="submit" value="stop" name="stop" id="capture">
+    <form action="/model_test" method="POST">
+        <!-- <input type="submit" value="stop" name="stop" id="capture"> -->
+        <select name="desired_pose" id="desired_pose">
+            <option selected value={{desired_pose}}>{{desired_pose}}</option>
+            <option value="vrikshasana">Vrikshasana</option>
+            <option value="random">Random</option>
+        </select>
+        <input type="submit" value="start" name="start" id="capture">
     </form>
-    <img id="frame" src="{{ url_for('capture') }}" alt="Image">
+    {% if start %}
+        <img id="frame" src="{{ url_for('capture') }}" alt="Image">
+    {% endif %}
     <script src="{{ url_for('static', filename='capture.js') }}"></script>
 </body>
 </html>
