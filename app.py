@@ -8,6 +8,8 @@ mp_drawing = mp.solutions.drawing_utils
 app = Flask(__name__)
 global stop 
 stop = False
+#loading model
+model = tf.keras.models.load_model('./models/action-2.h5')
 
 class Camera(object):
     def __init__(self):
