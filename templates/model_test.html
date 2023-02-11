@@ -31,7 +31,7 @@
    
     
 </head>
-<body class=" flex flex-col gap-4 fStyle bg-[#E7EEA0] spacer">
+<body class="fStyle bg-[#E7EEA0] spacer items-center">
     <h2 class="text-orange-400 text-4xl mt-6">Posture Detection</h2>
     <!-- <h2>Image</h2> -->
     <form class="flex flex-col gap-4 items-center" action="/model_test" method="POST">
@@ -46,7 +46,9 @@
         <input type="submit" value="start" name="start" id="capture">
     </form>
     {% if start %}
-        <img id="frame" src="{{ url_for('capture') }}" alt="Image">
+    <div class = "flex justify-center" >
+        <img  id="frame" src="{{ url_for('capture') }}" alt="Image">
+    </div>
     {% endif %}
     <script src="{{ url_for('static', filename='capture.js') }}"></script>
 </body>

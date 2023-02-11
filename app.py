@@ -10,7 +10,7 @@ mp_drawing = mp.solutions.drawing_utils
 app = Flask(__name__)
 global stop 
 global desired_pose
-desired_pose = 'not selected'
+desired_pose = ''
 stop = False
 #loading model
 # model = tf.keras.models.load_model('./models/action-2.h5')
@@ -44,7 +44,7 @@ class Camera(object):
             return None
     
     def model_predict(self):
-        model = tf.keras.models.load_model('./models/action1.h5')
+        model = tf.keras.models.load_model('./models/action-2.h5')
         ret, frame = self.video.read()
         if ret:
             image, results = tools.mediapipe_detection(frame, self.pose)
@@ -64,7 +64,7 @@ class Camera(object):
                     if res[np.argmax(res)] > self.threshold:
                         self.current_action = self.actions[np.argmax(res)]
                 
-                image = tools.prob_viz(res, self.actions, image, colors=[(0, 255, 0) if x == np.argmax(res) else (0, 0, 255) for x in range(len(self.actions))])
+                # image = tools.prob_viz(res, self.actions, image, colors=[(0, 255, 0) if x == np.argmax(res) else (0, 0, 255) for x in range(len(self.actions))])
             if(self.current_action == desired_pose):
                 color = (0, 255, 0)
             else:
