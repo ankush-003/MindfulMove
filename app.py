@@ -2,11 +2,14 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, Response, stream_with_context
 import cv2
 import mediapipe as mp
+import tensorflow as tf
 mp_drawing = mp.solutions.drawing_utils
 # app
 app = Flask(__name__)
 global stop 
 stop = False
+#loading model
+model = tf.keras.models.load_model('./models/action-2.h5')
 
 class Camera(object):
     def __init__(self):
