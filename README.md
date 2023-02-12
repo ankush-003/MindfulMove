@@ -1,6 +1,6 @@
-# Flask-Posture-Detection
+# MindfulMove
 
-AI Personal trainer for detecting Yoga postures using Mediapipe BlazePose Model and LSTM Neural Network.
+MindfulMove is an AI Personal trainer for detecting Yoga postures using Mediapipe BlazePose Model and LSTM Neural Network
 
 
 ## Run Locally
