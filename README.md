@@ -46,6 +46,6 @@ Start the App
 
 - [Mediapipe Pose Model Documentation](https://google.github.io/mediapipe/solutions/pose.html)
 
-- [LSTM Model](https://www.geeksforgeeks.org/deep-learning-introduction-to-long-short-term-memory/)
+- [What's LSTM ?](https://www.geeksforgeeks.org/deep-learning-introduction-to-long-short-term-memory/)
 
 
